@@ -2,6 +2,7 @@
 //==============================================================================
 //
 // Author: Christoph Thurnheer
+//         c.thurnheer@gmx.ch
 //         Switzerland
 //
 // Creation Date: 
