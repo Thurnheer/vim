@@ -32,7 +32,6 @@ set textwidth=100
 "syntax enable
 :syntax on
 set background=dark
-colorscheme cpp
 
 
 " Open new split panes to right and bottom, which feels more natural
@@ -126,6 +125,9 @@ autocmd bufnewfile *.cpp so ~/cpp_source.txt
 autocmd bufnewfile *.cpp exe "1," . 13 . "g/Creation Date:.*/s//Creation Date: " .strftime("%d. %B %Y")
 autocmd bufnewfile *.cpp exe "1," . 13 . "g/Copyright.*/s//Copyright " .strftime("%Y") " Christoph Thurnheer"
 autocmd bufnewfile *.cpp exe "1," . 39 . "g/#include/s//#include \"" .expand("%:r") ".hpp\""
+
+let g:cpp_member_varialbe_highlight = 1
+let g:cpp_experimental_template_highlight = 1
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
