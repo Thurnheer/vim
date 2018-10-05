@@ -2,8 +2,6 @@
 //==============================================================================
 //
 // Author: Christoph Thurnheer
-//         Schlössliweg 1
-//         9442 Berneck
 //         Switzerland
 //
 // Creation Date: 
