@@ -9,8 +9,8 @@ set relativenumber
 set number
 
 "ignore cases when searching
-set ignorecase
-set gdefault      " Never have to type /g at the end of search / replace again
+"set ignorecase
+"set gdefault      " Never have to type /g at the end of search / replace again
 
 "higlight search results
 set hlsearch
