@@ -65,6 +65,10 @@ nnoremap <C-l> <C-w>l
 nnoremap j gj
 nnoremap k gk
 
+" make searching easy
+nnoremap S :vimgrep ,, **/*.hpp **/*.cpp **/*.h **/*.c <c-b><right><right><right><right><right><right><right><right><right>
+nnoremap s yiw :vimgrep ,\<<c-r>"\>, **/*.hpp **/*.cpp **/*.h **/*.c
+
 let g:clang_library_path='/usr/lib/llvm-3.5/lib/libclang.so'
 
 " search donw into subfolders
