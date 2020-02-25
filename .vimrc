@@ -76,7 +76,7 @@ let g:clang_library_path='/usr/lib/llvm-3.5/lib/libclang.so'
 set path+=**
 
 "Find the ctags file from vi upwards to root
-set tags=./tags;/
+set tags=./tags;,tags;
 
 "Display all matching files when we tab complete
 set wildmenu
