@@ -38,7 +38,10 @@ set background=dark
 " set splitbelow
 set splitright
 
-set term=screen-256color
+if has('nvim')
+else
+    set term=screen-256color
+endif
 
 " Auto resize Vim splits to active split
 set winwidth=104
@@ -145,9 +148,17 @@ let g:cpp_experimental_template_highlight = 1
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+let s:clip = '/mnt/c/Windows/System32/clip.exe'
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
+
 " tell vim to use an undo file
 set undofile
 " undo file directory
-set undodir=/media/paenny/FastData/.vimundo
+set undodir=~/vim/.vimundo
 map <C-K> :py3file /usr/share/clang/clang-format-8/clang-format.py<cr>
 imap <C-K> <c-o>:py3file /usr/share/clang/clang-format-8/clang-format.py<cr>
