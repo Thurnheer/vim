@@ -160,5 +160,5 @@ endif
 set undofile
 " undo file directory
 set undodir=~/vim/.vimundo
-map <C-K> :py3file /usr/share/clang/clang-format-8/clang-format.py<cr>
-imap <C-K> <c-o>:py3file /usr/share/clang/clang-format-8/clang-format.py<cr>
+map <C-K> :py3file /usr/share/clang/clang-format-10/clang-format.py<cr>
+imap <C-K> <c-o>:py3file /usr/share/clang/clang-format-10/clang-format.py<cr>
