@@ -37,6 +37,8 @@ set textwidth=100
 :syntax on
 set background=dark
 
+set clipboard+=unnamedplus
+
 
 " Open new split panes to right and bottom, which feels more natural
 " set splitbelow
@@ -52,12 +54,6 @@ set winwidth=104
 set winheight=5
 set winminheight=5
 set winheight=999
-
-" for programming
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
