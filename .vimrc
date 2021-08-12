@@ -33,6 +33,8 @@ set textwidth=100
 :syntax on
 set background=dark
 
+set clipboard+=unnamedplus
+
 
 " Open new split panes to right and bottom, which feels more natural
 " set splitbelow
@@ -48,12 +50,6 @@ set winwidth=104
 set winheight=5
 set winminheight=5
 set winheight=999
-
-" for programming
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -160,5 +156,5 @@ endif
 set undofile
 " undo file directory
 set undodir=~/vim/.vimundo
-map <C-K> :py3file /usr/share/clang/clang-format-10/clang-format.py<cr>
-imap <C-K> <c-o>:py3file /usr/share/clang/clang-format-10/clang-format.py<cr>
+" map <C-K> :py3file /usr/share/clang/clang-format-10/clang-format.py<cr>
+" imap <C-K> <c-o>:py3file /usr/share/clang/clang-format-10/clang-format.py<cr>
