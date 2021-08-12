@@ -15,6 +15,10 @@ set number
 "higlight search results
 set hlsearch
 
+"ignore whitespaces in diffs
+set diffopt+=iwhite
+set nofixendofline
+
 "Show matching bracets
 set showmatch
 
@@ -120,19 +124,6 @@ inoremap jk <esc>
 set ruler " show the cursor position all the time
 set showcmd " show incomplete command
 
-" automatic *.hpp generation
-autocmd bufnewfile *.hpp so ~/hpp_header.txt
-autocmd bufnewfile *.hpp exe "1," . 13 . "g/Creation Date:.*/s//Creation Date: " .strftime("%d. %B %Y")
-autocmd bufnewfile *.hpp exe "1," . 13 . "g/Copyright.*/s//Copyright " .strftime("%Y") " Christoph Thurnheer"
-autocmd bufnewfile *.hpp exe "1," . 33 . "g/ifndef.*/s//ifndef " .toupper(expand("%:r"))
-autocmd bufnewfile *.hpp exe "1," . 34 . "g/define.*/s//define " .toupper(expand("%:r"))
-
-" automatic *.cpp generation
-autocmd bufnewfile *.cpp so ~/cpp_source.txt
-autocmd bufnewfile *.cpp exe "1," . 13 . "g/Creation Date:.*/s//Creation Date: " .strftime("%d. %B %Y")
-autocmd bufnewfile *.cpp exe "1," . 13 . "g/Copyright.*/s//Copyright " .strftime("%Y") " Christoph Thurnheer"
-autocmd bufnewfile *.cpp exe "1," . 39 . "g/#include/s//#include \"" .expand("%:r") ".hpp\""
-
 let g:cpp_member_varialbe_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
@@ -160,5 +151,25 @@ endif
 set undofile
 " undo file directory
 set undodir=~/vim/.vimundo
-map <C-K> :py3file /usr/share/clang/clang-format-10/clang-format.py<cr>
-imap <C-K> <c-o>:py3file /usr/share/clang/clang-format-10/clang-format.py<cr>
+
+if has('nvim')
+else
+    map <C-K> :py3file /usr/share/clang/clang-format-10/clang-format.py<cr>
+    imap <C-K> <c-o>:py3file /usr/share/clang/clang-format-10/clang-format.py<cr>
+endif
+
+if has('nvim')
+    call plug#begin('~/vim/plugged')
+
+    " Neoformat for clang format and cmake format
+    Plug 'sbdchd/neoformat'
+    Plug 'deoplete-plugins/deoplete-clang'
+
+    call plug#end()
+endif
+
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+
