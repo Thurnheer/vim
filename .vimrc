@@ -160,7 +160,10 @@ if has('nvim')
     " Neoformat for clang format and cmake format
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'sbdchd/neoformat'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'zchee/deoplete-clang'
     Plug 'deoplete-plugins/deoplete-clang'
+    Plug 'tpope/vim-fugitive'
 
     call plug#end()
     " set to 1, nvim will open the preview window after entering the markdown buffer
@@ -254,6 +257,10 @@ if has('nvim')
     " these filetypes will have MarkdownPreview... commands
     let g:mkdp_filetypes = ['markdown']
 
+
+    let g:neoformat_run_all_formatters = 1
+    let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+    let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/'
 endif
 
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
