@@ -164,8 +164,39 @@ if has('nvim')
     Plug 'zchee/deoplete-clang'
     Plug 'deoplete-plugins/deoplete-clang'
     Plug 'tpope/vim-fugitive'
+    Plug 'habamax/vim-asciidoctor'
+    Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ }
+
+    " (Optional) Multi-entry selection UI.
+    Plug 'junegunn/fzf'
 
     call plug#end()
+    
+    " Required for LanguageClient-neovim
+    " for operations modifying multiple buffers
+    set hidden
+    let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ 'cpp': ['clangd']
+    \ }
+
+    let g:LanguageClient_autoStart = 1
+    let g:LanguageClient_trace = 'verbose'
+
+    nmap <F5> <Plug>(lcn-menu)
+    " Or map each action separately
+    nmap <silent>K <Plug>(lcn-hover)
+    nmap <silent> gd <Plug>(lcn-definition)
+    nmap <silent> <F2> <Plug>(lcn-rename)
+
+    "
     " set to 1, nvim will open the preview window after entering the markdown buffer
     " default: 0
     let g:mkdp_auto_start = 0
