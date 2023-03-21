@@ -194,6 +194,7 @@ if has('nvim')
     " Or map each action separately
     nmap <silent>K <Plug>(lcn-hover)
     nmap <silent> gd <Plug>(lcn-definition)
+    nmap <silent> gr <Plug>(lcn-references)
     nmap <silent> <F2> <Plug>(lcn-rename)
 
     "
