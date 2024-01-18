@@ -72,7 +72,7 @@ nnoremap k gk
 nnoremap S :vimgrep ,, **/*.hpp **/*.cpp **/*.h **/*.c <c-b><right><right><right><right><right><right><right><right><right>
 nnoremap s yiw :vimgrep ,\<<c-r>"\>, **/*.hpp **/*.cpp **/*.h **/*.c
 
-let g:clang_library_path='/usr/lib/llvm-3.5/lib/libclang.so'
+let g:clang_library_path='/usr/lib/libclang.so'
 
 " search donw into subfolders
 " Provides tab-completion for all file-related tasks
@@ -155,7 +155,13 @@ else
 endif
 
 if has('nvim')
+
     call plug#begin(stdpath('data') . '/plugged')
+
+    Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
     " Neoformat for clang format and cmake format
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -184,11 +190,12 @@ if has('nvim')
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'python': ['/usr/local/bin/pyls'],
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-    \ 'cpp': ['clangd']
+    \ 'cpp': ['clangd', '-background-index',],
     \ }
 
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_trace = 'verbose'
+    let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
 
     nmap <F5> <Plug>(lcn-menu)
     " Or map each action separately
