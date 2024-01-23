@@ -191,6 +191,7 @@ if has('nvim')
     \ 'python': ['/usr/local/bin/pyls'],
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ 'cpp': ['clangd', '-background-index',],
+    \ 'c': ['clangd', '-background-index',],
     \ }
 
     let g:LanguageClient_autoStart = 1
