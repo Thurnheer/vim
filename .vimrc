@@ -45,6 +45,7 @@ set clipboard+=unnamedplus
 set splitright
 
 if has('nvim')
+    :colorscheme pablo
 else
     set term=screen-256color
 endif
